@@ -69,9 +69,14 @@
 			<div class="row">
 				
 			
-		<table class="table table-bordered">
-			
-		<?php 
+		<table id="tabla" class="table table-bordered">
+			<thead>
+				<tr>ID</tr>
+				<tr>Nombre</tr>
+				<tr>Descripcion</tr>
+				<tr>Categoria</tr>
+			</thead>
+		<!-- <?php 
 			$conn = new mysqli('localhost', 'root', '', 'ajax');
 			$sql = $conn->query("SELECT * FROM producto");
 			
@@ -91,7 +96,10 @@
 					';
 				}
 			
-		?>
+		?> -->
+			<tbody id="tableBody">
+
+			</tbody>
 		</table>
 			</div>
 		</div>
@@ -152,6 +160,23 @@
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script>
-	
+	 function MostrarProducto() {
+            $.ajax({
+                url: 'ajax.php',
+                method: 'POST',
+                dataType: 'text',
+                data: {
+                    key: 'getExistingData',
+                    : ,
+                    : 
+                }, success: function (response) {
+                    if (response != "reachedMax") {
+                        $('#tableBody').append(response);
+                         += ;
+                        MostrarProducto();
+                    }
+                }
+            });
+        }
 </script>
 </html>
