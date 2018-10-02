@@ -80,28 +80,7 @@
 					<th></th>
 				</tr>
 			</thead>
-		<?php 
-			$conn = new mysqli('localhost', 'root', '', 'ajax');
-			$sql = $conn->query("SELECT * FROM producto");
-			
-				while($data = $sql->fetch_array()) {
-					echo '
-						<tr id="producto'.$data["id"].'">
-							<td>'.$data["id"].'</td>
-							<td>'.$data["nombre"].'</td>
-							<td>'.$data["categoria"].'</td>
-							<td>'.$data["descripcion"].'</td>
-							<td>
-								<input type="button" data-toggle="modal" data-target="#modalUpdate"  value="Edit" class="btn btn-primary">
-								<input type="button" value="View" class="btn">
-								<input type="button" onclick="destroy('.$data["id"].')" id="delete" value="Destroy" class="btn btn-danger">	
-							</td>
-						</tr>
-					';
-				}
-			
-		?>
-			<tbody id="tableBody">
+			<tbody>
 
 			</tbody>
 		</table>
@@ -157,7 +136,6 @@
 					<div class="text-center py-3 app-copy">©2018 Copyright:
 						<a href="#!"> JesusVillaltaCV</a>
 					</div>
-					<input type="button" class="btn btn-danger" id="boton1" value="hola">
 				</footer>     
 				<!-- Scripts   -->
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
@@ -167,22 +145,23 @@
 <script>
 $(document).ready(function(){
 
-	
+	MostrarProducto(0,1);
 });
-	 function MostrarProducto() {
-            $.ajax({
-                url: 'ajax.php',
+	 function MostrarProducto(start, limit) {	
+		$.ajax({
+                url: 'ver.php',
                 method: 'POST',
                 dataType: 'text',
                 data: {
-                    key: 'getExistingData',
-                    : ,
-                    : 
+                    key: 'getProducto',
+                    start: start ,
+                    limit: limit,
                 }, success: function (response) {
-                    if (response != "reachedMax") {
-                        $('#tableBody').append(response);
-                         += ;
-                        MostrarProducto();
+                    if (response != " ") {
+                        $('tbody').append(response);
+						start+= limit ;
+						MostrarProducto(start,limit);
+                        
                     }
                 }
             });

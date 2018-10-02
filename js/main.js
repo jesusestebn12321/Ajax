@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	MostrarProducto(0,10);//paginacion
 	$('#practicas').click(function(){
 		var nombre= $('#nombre');
 		var descripcion= $('#descripcion');
@@ -53,6 +54,25 @@ function upData(id){
 			// 	alert('Todos los Campos son Requridos');
 			// }
 }
+function MostrarProducto(start, limit) {	
+	$.ajax({
+			url: 'ver.php',
+			method: 'POST',
+			dataType: 'text',
+			data: {
+				key: 'getProducto',
+				start: start ,
+				limit: limit,
+			}, success: function (response) {
+				if (response != " ") {
+					$('tbody').append(response);
+					start+= limit ;
+					MostrarProducto(start,limit);
+					
+				}
+			}
+		});
+	}
 function destroy(id) {
 	swal({
 		title: "¿Desea eliminar este registro?",
@@ -60,7 +80,6 @@ function destroy(id) {
 		icon: "warning",
 		buttons: true,
 		dangerMode: true,
-		customClass: 'wow tada'
 	}).then((willDelete) => {
 		if (willDelete) {
 			$.ajax({
@@ -70,11 +89,11 @@ function destroy(id) {
 				data: {
 					key: 'destroy',
 					id: id
-				},Success: function (response) {
+				},success: function (response) {
+					$('#'+id).addClass('hidden');
 					swal(response, {
 						icon: "success",
-					});	
-					$('#producto'+id).css('display','none');
+					});
 				}
 			});
 		}else{
@@ -95,12 +114,3 @@ function isNotEmpty(request) {
 }
 
 $('[data-toggle="tooltip"]').tooltip();
-wow = new WOW(
-{
-	animateClass: 'animated',
-	offset:       100,
-	callback:     function(box) {
-		console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
-	}
-}
-);
