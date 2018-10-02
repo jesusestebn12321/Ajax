@@ -18,6 +18,7 @@
 	<!-- Scripts -->
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
+	<script src="sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
 	<script src="js/vendor/jquery-1.11.2.min.js"></script>
 </head>
 <body>
@@ -71,12 +72,15 @@
 			
 		<table id="tabla" class="table table-bordered">
 			<thead>
-				<tr>ID</tr>
-				<tr>Nombre</tr>
-				<tr>Descripcion</tr>
-				<tr>Categoria</tr>
+				<tr>
+					<th>ID</th>
+					<th>Nombre</th>
+					<th>Descripcion</th>
+					<th>Categoria</th>
+					<th></th>
+				</tr>
 			</thead>
-		<!-- <?php 
+		<?php 
 			$conn = new mysqli('localhost', 'root', '', 'ajax');
 			$sql = $conn->query("SELECT * FROM producto");
 			
@@ -90,13 +94,13 @@
 							<td>
 								<input type="button" data-toggle="modal" data-target="#modalUpdate"  value="Edit" class="btn btn-primary">
 								<input type="button" value="View" class="btn">
-								<input type="button" onclick="destroy('.$data["id"].')" value="Destroy" class="btn btn-danger">	
+								<input type="button" onclick="destroy('.$data["id"].')" id="delete" value="Destroy" class="btn btn-danger">	
 							</td>
 						</tr>
 					';
 				}
 			
-		?> -->
+		?>
 			<tbody id="tableBody">
 
 			</tbody>
@@ -153,6 +157,7 @@
 					<div class="text-center py-3 app-copy">©2018 Copyright:
 						<a href="#!"> JesusVillaltaCV</a>
 					</div>
+					<input type="button" class="btn btn-danger" id="boton1" value="hola">
 				</footer>     
 				<!-- Scripts   -->
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
@@ -160,6 +165,10 @@
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script>
+$(document).ready(function(){
+
+	
+});
 	 function MostrarProducto() {
             $.ajax({
                 url: 'ajax.php',

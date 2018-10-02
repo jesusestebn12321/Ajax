@@ -7,8 +7,8 @@
 		$categoria = $conn->real_escape_string($_POST['categoria']);
 		$conn->query("INSERT INTO producto (nombre, descripcion, categoria) 
 					VALUES ('$nombre', '$descripcion', '$categoria')");
-		exit('Success!');	
+		exit('Success!'.' Registrado con Exito');	
 	}else{
-		exit('ERROR!');
+		exit('ERROR!'.'Todos los campos son requeridos');
 	}
 	
