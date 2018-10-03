@@ -7,7 +7,7 @@
 				</div>
 				<div class="modal-body">
 					<form action="#" id="formulario">
-						<input type="hidden" value="">
+						<input type="hidden" id="idRow" value="0">
 						<div class="form-group">
 							<label for="nombre">Nombre</label>
 							<input id="nombre" type="text" class="form-control" placeholder="Nombre" required>
@@ -25,7 +25,7 @@
 
 					</div>
 					<div class="app-modal-footer modal-footer">
-						<input type="button" id="btnUpdate" value="Edit" class="btn btn-success">
+						<input type="button"   value="Edit" class="btn btn-success">
 						<button class="btn btn-danger" data-dismiss="modal">Exit <span class="glyphicon glyphicon-off"></span></button>
 					</div>
 				</form>

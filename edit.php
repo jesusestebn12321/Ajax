@@ -6,7 +6,7 @@
     $categoria=$conn->real_escape_string($_POST['categoria']);
     if ($_POST['key']=='edit') {
         $conn->query("UPDATE producto SET nombre='$nombre', descripcion='$descripcion', categoria='$categoria' WHERE id='$id'");				
-        exit('Success!');
+        exit('Success!'.' Se a Editado este registro');
         
     } else{
         exit('ERROR!');

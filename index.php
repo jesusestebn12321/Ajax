@@ -18,6 +18,7 @@
 	<!-- Scripts -->
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
+	<script src="sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
 	<script src="js/vendor/jquery-1.11.2.min.js"></script>
 </head>
 <body>
@@ -71,33 +72,15 @@
 			
 		<table id="tabla" class="table table-bordered">
 			<thead>
-				<tr>ID</tr>
-				<tr>Nombre</tr>
-				<tr>Descripcion</tr>
-				<tr>Categoria</tr>
+				<tr>
+					<th>ID</th>
+					<th>Nombre</th>
+					<th>Descripcion</th>
+					<th>Categoria</th>
+					<th></th>
+				</tr>
 			</thead>
-		<!-- <?php 
-			$conn = new mysqli('localhost', 'root', '', 'ajax');
-			$sql = $conn->query("SELECT * FROM producto");
-			
-				while($data = $sql->fetch_array()) {
-					echo '
-						<tr id="producto'.$data["id"].'">
-							<td>'.$data["id"].'</td>
-							<td>'.$data["nombre"].'</td>
-							<td>'.$data["categoria"].'</td>
-							<td>'.$data["descripcion"].'</td>
-							<td>
-								<input type="button" data-toggle="modal" data-target="#modalUpdate"  value="Edit" class="btn btn-primary">
-								<input type="button" value="View" class="btn">
-								<input type="button" onclick="destroy('.$data["id"].')" value="Destroy" class="btn btn-danger">	
-							</td>
-						</tr>
-					';
-				}
-			
-		?> -->
-			<tbody id="tableBody">
+			<tbody>
 
 			</tbody>
 		</table>
@@ -160,20 +143,25 @@
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script>
-	 function MostrarProducto() {
-            $.ajax({
-                url: 'ajax.php',
+$(document).ready(function(){
+
+	MostrarProducto(0,1);
+});
+	 function MostrarProducto(start, limit) {	
+		$.ajax({
+                url: 'ver.php',
                 method: 'POST',
                 dataType: 'text',
                 data: {
-                    key: 'getExistingData',
-                    : ,
-                    : 
+                    key: 'getProducto',
+                    start: start ,
+                    limit: limit,
                 }, success: function (response) {
-                    if (response != "reachedMax") {
-                        $('#tableBody').append(response);
-                         += ;
-                        MostrarProducto();
+                    if (response != " ") {
+                        $('tbody').append(response);
+						start+= limit ;
+						MostrarProducto(start,limit);
+                        
                     }
                 }
             });
