@@ -28,12 +28,20 @@ $(document).ready(function(){
 		}
 	});		
 });
-		
+$('#editar').click(function(key){
+	var nombre= $('#nombre');
+	var descripcion= $('#descripcion');
+	var categoria= $('#categoria');
+	var id= $('#idRow');
+	alert(id + nombre + descripcion + categoria);
+	
+});	
 function upData(id){
 	var nombre= $('#nombre');
 	var descripcion= $('#descripcion');
 	var categoria= $('#categoria');
 	var id=id;
+	alert(id + nombre);
 			// if (isNotEmpty(nombre) && isNotEmpty(descripcion) && isNotEmpty(categoria)) {
 			// 	$.ajax({
 			// 		url: 'upDate.php',
@@ -54,25 +62,26 @@ function upData(id){
 			// 	alert('Todos los Campos son Requridos');
 			// }
 }
+
 function MostrarProducto(start, limit) {	
 	$.ajax({
-			url: 'ver.php',
-			method: 'POST',
-			dataType: 'text',
-			data: {
-				key: 'getProducto',
-				start: start ,
-				limit: limit,
-			}, success: function (response) {
-				if (response != " ") {
-					$('tbody').append(response);
-					start+= limit ;
-					MostrarProducto(start,limit);
-					
-				}
+		url: 'ver.php',
+		method: 'POST',
+		dataType: 'text',
+		data: {
+			key: 'getProducto',
+			start: start,
+			limit: limit,
+		}, success: function (response) {
+			if (response != " ") {
+				$('tbody').append(response);
+				start+= limit ;
+				MostrarProducto(start,limit);				
 			}
-		});
-	}
+		}
+	});
+}
+
 function destroy(id) {
 	swal({
 		title: "¿Desea eliminar este registro?",
@@ -101,7 +110,7 @@ function destroy(id) {
 				icon:"info",
 			});
 		}
-	 });
+	});
 }
 function isNotEmpty(request) {
 	if (request.val() == '') {
