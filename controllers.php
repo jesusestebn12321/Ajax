@@ -9,10 +9,6 @@
 					VALUES ('$nombre', '$descripcion', '$categoria')");
 		exit('Success!'.' Registrado con Exito');	
 	}else{
-<<<<<<< HEAD
-		exit('ERROR');
-=======
 		exit('ERROR!'.'Todos los campos son requeridos');
->>>>>>> 721dc8b2369ad393b94f6f4c2a0c95f925b70363
 	}
- 
+	
