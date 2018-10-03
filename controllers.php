@@ -9,6 +9,6 @@
 					VALUES ('$nombre', '$descripcion', '$categoria')");
 		exit('Success!');	
 	}else{
-		exit('ERROR!');
+		exit('ERROR');
 	}
-	
+ 
