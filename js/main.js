@@ -40,6 +40,7 @@ function store(request){
 		url: "edit.php",
 		dataType: "text",
 		data:{
+			
 			key:'edit',
 			nombre:nombre.val(),
 			descripcion:descripcion.val(),
@@ -52,8 +53,6 @@ function store(request){
 		}
 	});	
 }
-
-
 
 function destroy(id) {
 	swal({
