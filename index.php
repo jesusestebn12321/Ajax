@@ -15,6 +15,8 @@
 	<link rel="stylesheet" href="./css/main.css">
 	<link rel="stylesheet" href="./css/redes.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="datatables/dataTables.bootstrap.css"/>
+ 
 	<!-- Scripts -->
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
@@ -78,7 +80,7 @@
 		</div>
 	</section>
 	<section>
-	</section>
+		</section>
 
 </body>
 <footer class="app-footer">
@@ -96,7 +98,7 @@
 						<i class="fa fa-git  mr-4" style="color:white"> </i>
 					</a>
 					<a class="app-rotar app-icono-redes" href="https://www.linkedin.com/in/jesus-esteban-villalta-12b11915a" data-toggle="tooltip" data-placement="bottom" title="Linkedin" target="_black">
-						<i class="fa fa-linkedin  mr-4" style="color:white"> </i>
+					<i class="fa fa-linkedin  mr-4" style="color:white"> </i>
 					</a>
 					<a class="app-rotar app-icono-redes" id="id" href="https://www.instagram.com/esteban_jvg.sk8" data-toggle="tooltip" data-placement="bottom" title="Instagram" target="_black">
 						<i class="fa fa-instagram " style="color:white"> </i>
@@ -128,19 +130,21 @@
 					</div>
 				</footer>     
 				<!-- Scripts   -->
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+				<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 <script src="js/vendor/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
 <script src="js/vendor/bootstrap.min.js"></script>
+<script type="text/javascript" src="datatables/dataTables.bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script>
-$(document).ready(function(){
+	$(document).ready(function(){
 
 	MostrarProducto(0,1);
-
+	
 });
 	 function MostrarProducto(start, limit) {	
 		$.ajax({
-                url: 'ver.php',
+			url: 'ver.php',
                 method: 'POST',
                 dataType: 'text',
                 data: {
@@ -152,8 +156,10 @@ $(document).ready(function(){
                         $('tbody').append(response);
 						start+= limit ;
 						MostrarProducto(start,limit);
+						$('.table').DataTable();
                         
-                    }
+                    }else{
+					}
                 }
             });
         }
