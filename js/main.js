@@ -25,7 +25,39 @@ $(document).ready(function(){
 				icon:"info",
 			});
 		}
-	});		
+	});
+	$('#submit').click(function(){
+		var nombreForm=$('#nombreForm');
+		var correoFrom=$('#correoForm');
+		var telefonoForm=$('#telefonoForm');
+		var asuntoForm=$('#asuntoForm');
+		var mensajeForm=$('#mensajeForm');
+		if (isNotEmpty(nombreForm) && isNotEmpty(correoFrom) && isNotEmpty(telefonoForm) && isNotEmpty(asuntoForm) && isNotEmpty(mensajeForm)) {
+			$.ajax({
+				url: 'controllersForm.php',
+				method: 'POST',
+				dataType: 'text',
+				data: {
+					key: 'enviar',
+					nombre: nombreForm.val(),
+					email: correoFrom.val(),
+					telefono: telefonoForm.val(),
+					asunto:asuntoForm.val(),
+					mensaje:mensajeForm.val()
+				}, success: function (response) {
+					swal(response , {
+						icon:"success",
+					});
+					$('#form')[0].reset();
+				}
+			});
+		}else{
+			swal('todos los campos son requeridos',{
+				icon:"info",
+			});
+		}
+	});
+
 });
 
 

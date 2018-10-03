@@ -6,7 +6,7 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
-	<title> Curriculum Vitae </title>
+	<title> Ajax CRUD </title>
 	<link rel="shortcut icon" href="img/portafolio.ico" />
 	<!-- Styles -->
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -22,8 +22,8 @@
 	<script src="js/vendor/jquery-1.11.2.min.js"></script>
 </head>
 <body>
-	<?php include('modal.php'); ?>
-	<?php include('modalUpdate.php'); ?>
+	<?php include('modal.php');?>
+	<?php include('modalForm.php');?>
 	<header >
 		<nav class="navbar app-navbar" id="app-nav-border">
 			<div class="container">
@@ -33,39 +33,29 @@
 							<img class="app-img-titulo" style="margin-left: -50px;" src="img/manual.png">
 						</div>
 						<div class="col-xs-2 col-xs-offset-1 col-sm-offset-0 col-lg-offset-0">
-							<a href="#" class="app-centrar col-xs-offset-1" >Curriculum</a>
+							<a href="#" class="app-centrar col-xs-offset-1" >Ajax</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</nav>
-		<section>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="app-centrar-imgP col-xs-12 col-lg-6 wow swing" data-wow-offset="300">
-						<img class="app-imagen-personal" src="img/imgPersonal.jpg" alt="imagen personal">
-					</div>
-					<div class="app-centrar-nombre col-xs-12 col-xs-offset-2 col-sm-offset-0 col-lg-offset-0 col-lg-6" ">
-						<div class="wow bounce" data-wow-offset="300">
-							<p class="app-titulo-nombre"><h3> Jesus Esteban Villalta Gonzalez</h3></p>
-							<p class="app-separador-name"></p>
-						</div>
-						<ul class="wow flash" data-wow-offset="300">
-							<li class="list-group-item" style="padding: none;background: none;border:none;"><h4>Programador <i class="fa fa-code"></i> </h4></li>
-							<li class="list-group-item" style="padding: none;background: none;border:none;"><h4>Diseñador Web <i class="fa fa-code"></i> </h4></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</section>
+		
 	</header>
 
-	<section style="width:100px;">
-		<div>
-			<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#miModal"> Nuevo Producto <span class="fa fa-upload"></span>	</a>
+	<section style="width:100px;margin-top:50px">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#miModal"> Nuevo Producto <span class="fa fa-upload"></span>	</a>
+				</div>
+				<div class="col-lg-6">
+					<a href="#" class="btn btn-info" data-toggle="modal" data-target="#modalForm"> Enviar un E-mail <span class="fa fa-envelope "></span>	</a>
+				</div>
+			</div>
 		</div>
 	</section>
-	<section>
+	
+	<section style="margin-top:50px;">
 		<div class="container">
 			<div class="row">
 				
@@ -87,8 +77,8 @@
 			</div>
 		</div>
 	</section>
-
-
+	<section>
+	</section>
 
 </body>
 <footer class="app-footer">
@@ -146,6 +136,7 @@
 $(document).ready(function(){
 
 	MostrarProducto(0,1);
+
 });
 	 function MostrarProducto(start, limit) {	
 		$.ajax({
