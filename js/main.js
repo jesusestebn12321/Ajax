@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	MostrarProducto(0,10);//paginacion
 	$('#practicas').click(function(){
 		var nombre= $('#nombre');
 		var descripcion= $('#descripcion');
@@ -28,59 +27,33 @@ $(document).ready(function(){
 		}
 	});		
 });
-$('#editar').click(function(key){
-	var nombre= $('#nombre');
-	var descripcion= $('#descripcion');
-	var categoria= $('#categoria');
-	var id= $('#idRow');
-	alert(id + nombre + descripcion + categoria);
-	
-});	
-function upData(id){
-	var nombre= $('#nombre');
-	var descripcion= $('#descripcion');
-	var categoria= $('#categoria');
-	var id=id;
-	alert(id + nombre);
-			// if (isNotEmpty(nombre) && isNotEmpty(descripcion) && isNotEmpty(categoria)) {
-			// 	$.ajax({
-			// 		url: 'upDate.php',
-			// 		method: 'POST',
-			// 		dataType: 'text',
-			// 		data: {
-			// 			key: 'upDate',
-			// 			id: id,
-			// 			nombre: $nombre.val(),
-			// 			descripcion: $descripcion.val(),
-			// 			categoria: $categoria.val()
-			// 		}, success: function (response) {
-			// 			alert(response);
-			// 			$('#producto'+id).css('display','none');
-			// 		}
-			// 	});
-			// }else{
-			// 	alert('Todos los Campos son Requridos');
-			// }
+
+
+
+function store(request){
+	var nombre= $('#nombreRow'+request);
+	var descripcion= $('#descripcionRow'+request);
+	var categoria= $('#categoriaRow'+request);
+	var id=$('#idRow'+request);
+	$.ajax({
+		type: "POST",
+		url: "edit.php",
+		dataType: "text",
+		data:{
+			key:'edit',
+			nombre:nombre.val(),
+			descripcion:descripcion.val(),
+			categoria:categoria.val(),
+			id:id.val(),
+		},success: function(response) {
+			swal(response, {
+				icon:"success",
+			});
+		}
+	});	
 }
 
-function MostrarProducto(start, limit) {	
-	$.ajax({
-		url: 'ver.php',
-		method: 'POST',
-		dataType: 'text',
-		data: {
-			key: 'getProducto',
-			start: start,
-			limit: limit,
-		}, success: function (response) {
-			if (response != " ") {
-				$('tbody').append(response);
-				start+= limit ;
-				MostrarProducto(start,limit);				
-			}
-		}
-	});
-}
+
 
 function destroy(id) {
 	swal({
@@ -121,5 +94,4 @@ function isNotEmpty(request) {
 		return true;
 	}
 }
-
 $('[data-toggle="tooltip"]').tooltip();

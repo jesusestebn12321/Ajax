@@ -25,7 +25,7 @@
 
 					</div>
 					<div class="app-modal-footer modal-footer">
-						<input type="button" id='editar'  value="Edit" class="btn btn-success">
+						<input type="button"   value="Edit" class="btn btn-success">
 						<button class="btn btn-danger" data-dismiss="modal">Exit <span class="glyphicon glyphicon-off"></span></button>
 					</div>
 				</form>

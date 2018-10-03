@@ -143,7 +143,28 @@
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script>
+$(document).ready(function(){
 
-	 
+	MostrarProducto(0,1);
+});
+	 function MostrarProducto(start, limit) {	
+		$.ajax({
+                url: 'ver.php',
+                method: 'POST',
+                dataType: 'text',
+                data: {
+                    key: 'getProducto',
+                    start: start ,
+                    limit: limit,
+                }, success: function (response) {
+                    if (response != " ") {
+                        $('tbody').append(response);
+						start+= limit ;
+						MostrarProducto(start,limit);
+                        
+                    }
+                }
+            });
+        }
 </script>
 </html>

@@ -9,15 +9,17 @@
             while($data = $sql->fetch_array()) {
                 $respuesta ='
                     <tr id="'.$data["id"].'">
-                        <td>'.$data["id"].'</td>
-                        <td>'.$data["nombre"].'</td>
-                        <td>'.$data["categoria"].'</td>
-                        <td>'.$data["descripcion"].'</td>
-                        <td>
-                            <input type="button" data-toggle="modal" data-target="#modalUpdate" onclick="editar('.$data["id"].')"  value="Edit" class="btn btn-primary">
-                            <input type="button" value="View" class="btn">
-                            <input type="button" onclick="destroy('.$data["id"].')" value="Destroy" class="btn btn-danger">	
-                        </td>
+                        <form action="#">
+                            <td><input type="hidden" value="'.$data["id"].'" id="idRow'.$data["id"].'">'.$data["id"].'</td>
+                            <td><input type="text" class="form-control" value="'.$data["nombre"].'" id="nombreRow'.$data["id"].'"></td>
+                            <td><input type="text" class="form-control" value="'.$data["descripcion"].'" id="descripcionRow'.$data["id"].'"></td>
+                            <td><input type="text" class="form-control" value="'.$data["categoria"].'" id="categoriaRow'.$data["id"].'"></td>
+                            <td>
+                                <input type="button" onclick="store('.$data["id"].')"  value="Edit" class="btn btn-primary">
+                                <input type="button" value="View" class="btn">
+                                <input type="button" onclick="destroy('.$data["id"].')" value="Destroy" class="btn btn-danger">	
+                            </td>
+                        </form>
                     </tr>
                 ';
             }
