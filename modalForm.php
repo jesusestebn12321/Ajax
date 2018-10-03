@@ -1,6 +1,6 @@
 <div class="modal fade" id="modalForm">
 		<div class="modal-dialog">
-			<div class="modal-content">
+			<div class="modal-content"> 
 				<div class="app-modal-header modal-header bg-aqua text-white">
 					<button class="close" aria-hidden="true" data-dismiss="modal">&times;</button>
 					<h3>E-mail <span class="fa fa-inbox"></span></h3>
