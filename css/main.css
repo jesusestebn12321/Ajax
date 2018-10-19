@@ -28,7 +28,15 @@
 .app-footer-a:hover{color:white;text-decoration-color:none;text-decoration:none;list-style:none;}
 .app-navbar{background:rgba(0, 0, 0, .8);border:2px solid white;height:100%;border-radius:0px;position:absolute;}
 .app-centrar-imgP{padding: 0px;width:50rem;position: absolute;left:150px;height:35rem;transition:all 1s;border-radius:95%;}
-.app-copy{background:-webkit-linear-gradient(left, #767676 0%, #767676 1%, #A0A0A0 23%, #D7D7D7 49%, #D7D7D7 54%, #A0A0A0 82%, #767676 99%, #767676 100%);background:-o-linear-gradient(left, #767676 0%, #767676 1%, #A0A0A0 23%, #D7D7D7 49%, #D7D7D7 54%, #A0A0A0 82%, #767676 99%, #767676 100%);background:linear-gradient(to right, #767676 0%, #767676 1%, #A0A0A0 23%, #D7D7D7 49%, #D7D7D7 54%, #A0A0A0 82%, #767676 99%, #767676 100%);;}
+.app-copy{
+    background: repeating-linear-gradient(
+      160deg,
+      rgba(0, 0, 0, 0) 50px,
+      rgba(0, 0, 0, 0) 40px,
+      #DF6C4F 40px,
+      #DF6C4F 60px
+    );
+}
 
 .app-rotar:hover i{-webkit-animation:girar .5s ease-in-out;-o-animation:girar 1s ease-in-out;animation:girar 1s ease-in-out;}
 .btn:focus:not(:active)::after{-webkit-animation:ripple 2s ease-in-out; -o-animation:ripple 2s ease-in-out; animation:ripple 2s ease-in-out;}
