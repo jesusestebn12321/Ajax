@@ -5,7 +5,7 @@ $(document).ready(function(){
 		var categoria= $('#categoria');
 		if (isNotEmpty(nombre) && isNotEmpty(descripcion) && isNotEmpty(categoria)) {
 			$.ajax({
-				url: 'controllers.php',
+				url: 'controllers/controllers.php',
 				method: 'POST',
 				dataType: 'text',
 				data: {
@@ -34,7 +34,7 @@ $(document).ready(function(){
 		var mensajeForm=$('#mensajeForm');
 		if (isNotEmpty(nombreForm) && isNotEmpty(correoFrom) && isNotEmpty(telefonoForm) && isNotEmpty(asuntoForm) && isNotEmpty(mensajeForm)) {
 			$.ajax({
-				url: 'controllersForm.php',
+				url: 'controllers/controllersForm.php',
 				method: 'POST',
 				dataType: 'text',
 				data: {
@@ -69,7 +69,7 @@ function store(request){
 	var id=$('#idRow'+request);
 	$.ajax({
 		type: "POST",
-		url: "edit.php",
+		url: "controllers/edit.php",
 		dataType: "text",
 		data:{
 			
@@ -96,7 +96,7 @@ function destroy(id) {
 	}).then((willDelete) => {
 		if (willDelete) {
 			$.ajax({
-				url: 'destroy.php',
+				url: 'controllers/destroy.php',
 				method: 'POST',
 				dataType: 'text',
 				data: {

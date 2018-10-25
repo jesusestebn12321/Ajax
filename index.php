@@ -24,8 +24,8 @@
 	<script src="js/vendor/jquery-1.11.2.min.js"></script>
 </head>
 <body>
-	<?php include('modal.php');?>
-	<?php include('modalForm.php');?>
+	<?php include('views/modal.php');?>
+	<?php include('views/modalForm.php');?>
 	<header >
 		<nav class="navbar app-navbar" id="app-nav-border">
 			<div class="container">
@@ -53,29 +53,24 @@
 				<div class="col-lg-6">
 					<a href="#" class="btn btn-info" data-toggle="modal" data-target="#modalForm"> Enviar un E-mail <span class="fa fa-envelope "></span>	</a>
 				</div>
+				<div class="col-lg-6">
+					<a href="#" class="btn btn-warning" id='vista'> vista 	</a>
+				</div>
+				<div class="col-lg-6">
+					<a href="#" class="btn btn-success" id='tabla'> tabla 	</a>
+				</div>
 			</div>
 		</div>
 	</section>
 	
-	<section style="margin-top:50px;">
+	<section  style="margin-top:50px;">
 		<div class="container">
-			<div class="row">
-				
-			
-		<table id="tabla" class="table table-bordered">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Nombre</th>
-					<th>Descripcion</th>
-					<th>Categoria</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
+			<div id='contenido' class="row">
+				<div >
 
-			</tbody>
-		</table>
+				</div>
+			
+		
 			</div>
 		</div>
 	</section>
@@ -140,11 +135,19 @@
 	$(document).ready(function(){
 
 	MostrarProducto(0,1);
-	
+	$('#vista').click(function(){
+		$("#contenido").load("views/vista.php");
+		
+	});
+	$('#tabla').click(function(){
+		$("#contenido").load("views/table.php");
+		
+	});
+
 });
 	 function MostrarProducto(start, limit) {	
 		$.ajax({
-			url: 'ver.php',
+			url: 'controllers/ver.php',
                 method: 'POST',
                 dataType: 'text',
                 data: {
